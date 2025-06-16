@@ -1,0 +1,25 @@
+{
+  "name": "aqa-playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neliapravdenko/aqa-playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neliapravdenko/aqa-playwright/issues"
+  },
+  "homepage": "https://github.com/neliapravdenko/aqa-playwright#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.53.0",
+    "@types/node": "^24.0.3"
+  }
+}
