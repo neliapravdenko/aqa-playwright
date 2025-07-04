@@ -5,6 +5,10 @@ export const usersList = {
     email: `aqa-nelia+${Date.now()}@test.com`,
     password: 'Test123!',
   },
+  registeredUser: {
+    email: `pravdenko2001@gmail.com`,
+    password: 'Test12345!',
+  },
 
   invalidUser: {
     name: {

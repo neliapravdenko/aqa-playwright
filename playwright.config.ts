@@ -1,4 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * Read environment variables from file.
@@ -29,19 +33,26 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     baseURL: process.env.BASE_URL,
     httpCredentials: {
-      username: process.env.HTTP_CREDENTIALS_USERNAME!,
-      password: process.env.HTTP_CREDENTIALS_PASSWORD!,
+      username: process.env.HTTP_CREDENTIALS_USERNAME || '',
+      password: process.env.HTTP_CREDENTIALS_PASSWORD || '',
     },
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: 'setup',
       use: { ...devices['Desktop Chrome'] },
+      testMatch: '*/setup/**.ts',
+    },
+    {
+      name: 'smoke',
+      use: { ...devices['Desktop Chrome'] },
+      testIgnore: '*/setup/**.ts',
+      dependencies: ['setup'],
     },
 
     // {
