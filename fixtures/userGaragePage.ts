@@ -6,12 +6,20 @@ type MyFixtures = {
 };
 
 export const test = base.extend<MyFixtures>({
-  garagePage: async ({ page }, use) => {
-    await page.context().storageState({ path: '../test-data/states/mainUserState.json' });
-    let garagePage = new GaragePage(page);
+  garagePage: async ({ browser }, use) => {
+    const context = await browser.newContext({
+      storageState: 'test-data/states/mainUserState.json',
+    });
+    const page = await context.newPage();
+
+    const garagePage = new GaragePage(page);
+
     await garagePage.open();
     await garagePage.verifyPageIsOpened();
+
     await use(garagePage);
+
+    await context.close();
   },
 });
 

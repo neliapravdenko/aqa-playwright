@@ -20,6 +20,6 @@ test.describe('Login and save user state', () => {
   test('Successful sign in', async ({ page }) => {
     await signInForm.loginUser(usersList.registeredUser.email, usersList.registeredUser.password);
     await garagePage.verifyPageIsOpened();
-    await page.context().storageState({ path: '../../test-data/states/mainUserState.json' });
+    await page.context().storageState({ path: 'test-data/states/mainUserState.json' });
   });
 });
