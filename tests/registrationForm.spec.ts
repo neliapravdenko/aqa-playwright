@@ -277,7 +277,7 @@ test.describe('Registration form', () => {
       await signUpForm.enterEmail(usersList.validUser.email);
       await signUpForm.enterPassword(usersList.validUser.password);
       await signUpForm.enterRepeatPassword(usersList.validUser.password);
-      expect(signUpForm.registerButton).toBeEnabled();
+      await expect(signUpForm.registerButton).toBeEnabled();
     });
 
     test('Should disable "Register" button when the form is empty', async () => {
@@ -290,7 +290,7 @@ test.describe('Registration form', () => {
       await signUpForm.enterEmail(usersList.validUser.email);
       await signUpForm.enterPassword(usersList.validUser.password);
       await signUpForm.enterRepeatPassword(usersList.invalidUser.password.notMatch);
-      expect(signUpForm.registerButton).toBeDisabled();
+      await expect(signUpForm.registerButton).toBeDisabled();
     });
   });
 });
