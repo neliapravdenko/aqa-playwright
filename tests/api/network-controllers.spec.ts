@@ -26,16 +26,8 @@ test.describe('API requests', () => {
 
   test.beforeAll(async ({ request }) => {
     authController = new AuthController(request);
-    carsControllerInner = new CarsController(request);
     sid = await authController.getAuthCookie(usersList.registeredUser.email, usersList.registeredUser.password);
     expect(sid).not.toBeUndefined();
-
-    const carToAdd = CarsFactory.createCar(2, 9, 100);
-    const createCarForRemoving = await carsControllerInner.addCar(carToAdd, sid);
-    const body = await createCarForRemoving.json();
-
-    carId = body.data.id;
-    expect(carId).not.toBeUndefined();
   });
 
   test.describe('Positive scenarios', () => {
@@ -62,8 +54,17 @@ test.describe('API requests', () => {
       expect(body.data.brand).toBe('Fiat');
     });
 
-    test('Delete car [/api/cars/{id}]', async () => {
+    test('Delete car [/api/cars/{id}]', async ({ request }) => {
+      carsControllerInner = new CarsController(request);
+
+      const carToAdd = CarsFactory.createCar(2, 9, 100);
+      const createCarForRemoving = await carsControllerInner.addCar(carToAdd, sid);
+      const body1 = await createCarForRemoving.json();
+      carId = body1.data.id;
+      expect(carId).not.toBeUndefined();
+
       const response = await carsController.deleteCar(carId, sid);
+
       const body = await response.json();
       expect(body.data.carId).toBe(carId);
       expect(response.status()).toBe(200);
