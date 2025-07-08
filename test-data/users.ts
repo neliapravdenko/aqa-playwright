@@ -6,6 +6,8 @@ export const usersList = {
     password: 'Test123!',
   },
   registeredUser: {
+    name: 'Nelia',
+    lastName: 'Tester',
     email: `pravdenko2001@gmail.com`,
     password: 'Test12345!',
   },
