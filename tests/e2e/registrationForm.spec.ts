@@ -1,7 +1,7 @@
 import test, { expect } from '@playwright/test';
-import { usersList } from '../test-data/users';
-import HomePage from '../pom/pages/HomePage';
-import SignUpForm from '../pom/forms/SignUpForm';
+import { usersList } from '../../test-data/users';
+import HomePage from '../../pom/pages/HomePage';
+import SignUpForm from '../../pom/forms/SignUpForm';
 
 let homePage: HomePage;
 let signUpForm: SignUpForm;
