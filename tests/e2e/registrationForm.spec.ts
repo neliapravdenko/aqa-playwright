@@ -281,7 +281,7 @@ test.describe('Registration form', () => {
     });
 
     test('Should disable "Register" button when the form is empty', async () => {
-      expect(signUpForm.registerButton).toBeDisabled();
+      await expect(signUpForm.registerButton).toBeDisabled();
     });
 
     test('Should keep "Register" button disabled if any field is invalid', async () => {
