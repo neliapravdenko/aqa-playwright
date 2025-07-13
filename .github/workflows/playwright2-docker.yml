@@ -6,9 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      BASE_URL: ${ { secrets.BASE_URL } }
-      HTTP_CREDENTIALS_USERNAME: ${ { secrets.HTTP_CREDENTIALS_USERNAME } }
-      HTTP_CREDENTIALS_PASSWORD: ${ { secrets.HTTP_CREDENTIALS_PASSWORD } }
+      BASE_URL: ${{secrets.BASE_URL}}
+      HTTP_CREDENTIALS_USERNAME: ${{secrets.HTTP_CREDENTIALS_USERNAME}}
+      HTTP_CREDENTIALS_PASSWORD: ${{secrets.HTTP_CREDENTIALS_PASSWORD}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,7 +18,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          push: false # Set to true if you want to push the image to a container registry
+          push: false
           tags: your-image-tag:latest
 
       - name: Run tests
