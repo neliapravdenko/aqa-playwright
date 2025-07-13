@@ -18,7 +18,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          tags: playwright test:latest
+          tags: playwright-test:latest
           load: true
 
       - name: Run tests
