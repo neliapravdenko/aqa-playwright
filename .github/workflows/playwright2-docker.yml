@@ -5,26 +5,19 @@ on: workflow_dispatch
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      BASE_URL: ${{secrets.BASE_URL}}
-      HTTP_CREDENTIALS_USERNAME: ${{secrets.HTTP_CREDENTIALS_USERNAME}}
-      HTTP_CREDENTIALS_PASSWORD: ${{secrets.HTTP_CREDENTIALS_PASSWORD}}
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Build Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v2
         with:
           context: .
           file: Dockerfile
-          tags: playwright-test:latest
-          load: true
+          push: false
+          tags: your-image-tag:latest
 
       - name: Run tests
         run: |
-          docker run --rm \
-            -e BASE_URL=$BASE_URL \
-            -e HTTP_CREDENTIALS_USERNAME=$HTTP_CREDENTIALS_USERNAME \
-            -e HTTP_CREDENTIALS_PASSWORD=$HTTP_CREDENTIALS_PASSWORD \
-            playwright-tests:latest npx playwright test
+          docker run your-image-tag:latest
