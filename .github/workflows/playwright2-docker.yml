@@ -20,4 +20,14 @@ jobs:
 
       - name: Run tests
         run: |
-          docker run --rm playwright-docker:latest
+          docker run --rm \
+            -e BASE_URL=$BASE_URL \
+            playwright-docker:latest
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+
+      - name: Debug environment variables
+        run: |
+          echo "BASE_URL=$BASE_URL"
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
