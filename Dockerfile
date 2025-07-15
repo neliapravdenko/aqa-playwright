@@ -2,8 +2,9 @@
 FROM mcr.microsoft.com/playwright:v1.53.1-noble
 # Set the working directory
 WORKDIR /test
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json and .env file
 COPY package*.json ./
+COPY .env .  
 # Install dependencies
 RUN npm install
 # Copy the rest of the application files
