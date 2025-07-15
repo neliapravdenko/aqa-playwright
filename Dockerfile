@@ -9,4 +9,4 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 # Set the entry point for the container
-CMD ["npx", "playwright", "test", "--browser=chromium"]
+CMD ["npx", "playwright", "test"]
