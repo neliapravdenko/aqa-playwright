@@ -20,4 +20,4 @@ jobs:
 
       - name: Run tests
         run: |
-          docker run playwright-docker:latest
+          docker run --rm playwright-docker:latest
