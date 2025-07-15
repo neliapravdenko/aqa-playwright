@@ -17,7 +17,6 @@ jobs:
           file: Dockerfile
           push: false
           tags: playwright-docker:latest
-          load: true
 
       - name: Run tests
         run: |
