@@ -20,4 +20,8 @@ jobs:
 
       - name: Run tests
         run: |
-          docker run playwright-docker:latest
+          # Create a temporary env file with all required variables
+          echo "BASE_URL=${{ secrets.BASE_URL }}" > .env
+          echo "HTTP_CREDENTIALS_USERNAME=${{ secrets.HTTP_CREDENTIALS_USERNAME }}" >> .env
+          echo "HTTP_CREDENTIALS_PASSWORD=${{ secrets.HTTP_CREDENTIALS_PASSWORD }}" >> .env
+            docker run --env-file .env playwright-docker:latest
